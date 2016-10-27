@@ -21,3 +21,13 @@ As a recipient user, I can view/download attachments on received emails.
 As an initiating and recipient user, I can view all my sent and received emails in a organized environment.
 
 As an initiating and recipient user, I can view each conversation in a fluid, single-paged format. 
+
+
+User Story 1:
+A doctor shall be able to log into the application using their NPI (National Provider Identifier) and password. If the doctor is new user to the application, it is required to prompt the user to create a new password before they will be given access. After access is granted, the doctor will be able to view their mailbox
+
+User Story 2:
+A doctor shall be able to view all emails that they have received or sent to other doctors. The doctor shall be able to click on one of the two mailboxes to view the content of the selected box. Inside each mailbox the doctor shall be able to click on an individual email to expand it for viewing.
+
+User Story 3:
+A doctor shall be able to upload patient documents or material to the application and share it with other doctors. It is required that the sender to input the receivers NPI to be able to share the patient documents, otherwise; the documents can only be viewed by the sender.
