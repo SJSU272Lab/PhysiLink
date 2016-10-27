@@ -16,7 +16,7 @@ As an intiating user, I receive confirmation that my email has be delivered to a
 
 As a recipient user, I can receive an email from another user.
 
-As a recipient user, i can view/download attachments on received emails.  
+As a recipient user, I can view/download attachments on received emails.  
 
 As an initiating and recipient user, I can view all my sent and received emails in a organized environment.
 
