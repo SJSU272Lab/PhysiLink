@@ -1,0 +1,36 @@
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+<script>
+$(function() {
+    $('#btnSignUp').click(function() {
+ 
+        $.ajax({
+            url: '/createEmail',
+            data: $('form').serialize(),
+            type: 'POST',
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+});
+</script>
+
+<form action="." method="post">
+<textarea name="textcontent" cols="40" rows="4">
+Type your text here...
+</textarea>
+     <div class="jumbotron">
+         <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button>    <p class="lead"></p>
+
+        </div>
+</form>
+
+

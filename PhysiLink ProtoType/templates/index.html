@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PhysiLink... </title>
+ 
+ 
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <!--<script type="text/javascript" src="click.js"></script>-->
+
+</head>
+ <style>
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1200px;
+    }
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="#">Inbox</a>
+                    </li>
+                    <li role="presentation"><a href="showSentBox">Sent Items</a>
+                    </li>
+                    <li role="presentation"><a href="showSignUp">Create New Email</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">PhysiLink</h3>
+        </div>
+
+        <div class="jumbotron">
+            <p class="lead"></p>
+ 	<p><a class="btn btn-lg btn-success" href="hello" role="button">Connect</a>
+            </p>
+ 	<p><a class="btn btn-lg btn-success" href="createVault" role="button">Vault</a>
+            </p>
+
+<table>
+  <tr>
+    <th>Document ID </th>
+    <th>From: Name</th>
+    <th>From: Provider Number</th>
+  </tr>
+ 
+{% for key in result %}
+ <tr>
+<td name = key ><a href="sentItems/{{ key.doc_id }}">  {{ key.doc_id }} </a></td>
+<td>  {{ key.name }} </a></td>
+<td>  {{ key.provider}} </a></td>
+
+<!-- <td> {{ key.name }} </td>
+<td> {{ key.id }} </td>-->
+  </tr>
+{% endfor %}
+</table>
+
+
+
+ </div>
+ 
+        <footer class="footer">
+            <p>&copy; Company 2015</p>
+        </footer>
+ 
+    </div>
+</body>
+ 
+</html>
+
