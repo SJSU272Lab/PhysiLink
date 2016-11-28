@@ -3,6 +3,7 @@ from cloudant.result import Result, ResultByKey
 from cloudant.query import Query
 from cloudant.index import Index
 from cloudant.database import CloudantDatabase
+from cloudant.document import Document
 import datetime
 
 USERNAME = '4920249b-5f3d-4983-94b1-bc4d4a91a2f5-bluemix'
@@ -95,7 +96,7 @@ def modifyUser(my_database, ID, field, value):
 	return True	
 #endfuction
 
-def createEmail(my_database, myList = []):
+def createEmail(my_database, myList = [], fd=None, fileName=None, filetype=None):
 	# Check if List is empty	
 	if not myList:
 		return -1	
@@ -116,6 +117,7 @@ def createEmail(my_database, myList = []):
 	'document_id' : myList[4],
 	'provider': myList[5],
 	'vault_id' : myList[6],
+	'attachment_flag': 'N',
 	'date': str(datetime.datetime.now())
 	}
 	# Try Create a document using the Database API
@@ -123,7 +125,12 @@ def createEmail(my_database, myList = []):
 		my_document = my_database.create_document(data)
 	except Exception:
 		return -4
-
+	#put Attachment
+	if ((fd is not None) and (fileName is not None) and (filetype is not None)):
+		my_document['attachment_flag'] = 'Y'
+		my_document.save()
+		my_document.put_attachment('AttachFile', filetype, fd)
+	
 	# Check that the document exists in the database
 	if my_document.exists():
 	    return True
@@ -158,6 +165,21 @@ def getRecvEmail(my_database, receiverID, emailLimit=0):
 		query = Query(my_database, selector={'receiver': receiverID, 'date':{'$gt' : 0}}, limit=int(emailLimit))
 	return query(sort=[{'date':'desc'}])['docs']
 #endfunction
+
+def getRecvAttachment(my_database, email_doc_id, outputFile):
+	# Test if database exists
+	try: 
+		my_database.exists()
+	except Exception:
+		return -1
+	# Try Open an existing document
+	try:
+		my_document = my_database[email_doc_id]
+	except Exception:
+		return -2
+	if my_document['attachment_flag'] == 'Y':
+		outfile = open(outputFile, 'w')
+		my_document.get_attachment('AttachFile', write_to=outfile)
 
 
 
