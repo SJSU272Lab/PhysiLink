@@ -181,6 +181,14 @@ def getRecvAttachment(my_database, email_doc_id, outputFile):
 		outfile = open(outputFile, 'w')
 		my_document.get_attachment('AttachFile', write_to=outfile)
 
+def getEmailDocID(my_database, doc_ID):
+	# Test if database exists
+	try: 
+		my_database.exists()
+	except Exception:
+		return -1
+	# return all doc_id that match
+	query = Query(my_database, selector={'document_id': doc_ID})
+	return query
 
-
-
+	
