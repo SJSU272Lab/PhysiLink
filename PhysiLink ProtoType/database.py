@@ -189,6 +189,6 @@ def getEmailDocID(my_database, doc_ID):
 		return -1
 	# return all doc_id that match
 	query = Query(my_database, selector={'document_id': doc_ID})
-	return query
+	return query(sort=[{'date':'desc'}])['docs']
 
 	
