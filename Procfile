@@ -1,1 +1,1 @@
-web: python /tree/master/PhysiLink ProtoType/app.py
+web: python PhysiLink ProtoType/app.py
