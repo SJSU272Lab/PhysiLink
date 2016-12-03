@@ -2,11 +2,11 @@
         <div class="header">
             <nav>
                 <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="/">Inbox</a>
+                    <li role="presentation" class="active"><a href="http://localhost:5000/">Inbox</a>
                     </li>
-                    <li role="presentation"><a href="showSentBox">Sent Items</a>
+                    <li role="presentation"><a href="http://localhost:5000/showSentBox">Sent Items</a>
                     </li>
-                    <li role="presentation"><a href="showSignUp">Create New Email</a>
+                    <li role="presentation"><a href="http://localhost:5000/showSignUp">Create New Email</a>
                     </li>
                 </ul>
             </nav>
@@ -19,42 +19,25 @@
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <title>PhysiLink... </title>
  
-<script>
-$(function() {
-    $('#submit').click(function() {
- 
-        $.ajax({
-            url: '/createEmail',
-            data: $('form').serialize(),
-            type: 'POST',
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
-    });
-});
-</script>
 
 
-<form id = "form" class="topBefore" method="POST">
+<form id = "form" action = "createEmail" class="topBefore" method="POST" enctype = "multipart/form-data">
+
+         	<input type = "file" name = "file"  />
 		  <input name = "name" id="name" type="text" placeholder="NAME">
-		  <input name = "sender" id="sender" type="text" placeholder="SENDER">
+		  <input name = "sender" id="sender" type="text" value = "{{ sender1 }}" >
 		  <input name = "provider" id="provider" type="text" placeholder="PROVIDER ID">
 		  <input name = "title" id="title" type="text" placeholder="SUBJECT">
 		  <textarea name ="document" type="text" placeholder="MESSAGE"></textarea>
  
-<input id="submit" type="submit" value ="SEND" <a href="createEmail"></a>
+		<input id="submit" type="submit" value ="SEND" <a href="createEmail"></a>
 
-  
 </form>
 
 <style media="screen" type="text/css">
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400);
 
-input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+input, text::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   color: #aca49c;
   font-size: 1.0em;
 }
@@ -63,7 +46,7 @@ input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholde
   color: #000000;
 }
 
-input::-moz-placeholder, textarea::-moz-placeholder {
+input, text::-moz-placeholder, textarea::-moz-placeholder {
   color: #aca49c;
   font-size:  1.0em;
 }
@@ -72,7 +55,7 @@ input:focus::-moz-placeholder, textarea:focus::-moz-placeholder {
   color: #000000;
 }
 
-input::placeholder, textarea::placeholder {
+input, text::placeholder, textarea::placeholder {
   color: #aca49c;
   font-size:  1.0em;
 }
@@ -81,7 +64,7 @@ input:focus::placeholder, textarea::focus:placeholder {
   color: #bbb5af;
 }
 
-input::-ms-placeholder, textarea::-ms-placeholder {
+input, text::-ms-placeholder, textarea::-ms-placeholder {
   color: #aca49c;
   font-size:  1.0em;
 }
@@ -137,7 +120,7 @@ body {
 header {
   position: relative;
   margin: 100px 0 25px 0;
-  font-size: 3.000em;
+  font-size: 2.5em;
   text-align: center;
   letter-spacing: 7px;
 }
@@ -148,7 +131,7 @@ header {
   margin: 50px auto 100px auto;
 }
 
-input {
+text{
   font-family: 'Lato', sans-serif;
   font-size: 1.0em;
   width: 940px;
@@ -161,6 +144,22 @@ input {
   
   border: solid 1px #b3aca7;
   border-bottom: none;
+  
+}
+
+input{
+  font-family: 'Lato', sans-serif;
+  font-size: 1.0em;
+  width: 940px;
+  height: 50px;
+  padding: 0px 15px 0px 15px;
+  
+  background: transparent;
+  outline: none;
+  color: #726659;
+  
+  border: solid 1px #b3aca7;
+  border-bottom: solid 1px #b3aca7;
   
   transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;

@@ -38,11 +38,11 @@ tr:nth-child(even) {
         <div class="header">
             <nav>
                 <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="/">Inbox</a>
+                    <li role="presentation" class="active"><a href="http://localhost:5000/">Inbox</a>
                     </li>
-                    <li role="presentation"><a href="showSentBox">Sent Items</a>
+                    <li role="presentation"><a href="http://localhost:5000/showSentBox">Sent Items</a>
                     </li>
-                    <li role="presentation"><a href="showSignUp">Create New Email</a>
+                    <li role="presentation"><a href="http://localhost:5000/showSignUp">Create New Email</a>
                     </li>
                 </ul>
             </nav>
@@ -54,16 +54,19 @@ tr:nth-child(even) {
 
 <table>
   <tr>
-    <th>Document ID </th>
     <th>Name</th>
     <th>Provider Number</th>
+    <th> Subject </th>
+    <th>Document ID </th>
   </tr>
  
 {% for key in result %}
  <tr>
-<td name = key ><a href="sentItems/{{ key.doc_id }}">  {{ key.doc_id }} </a></td>
+
 <td>  {{ key.name }} </a></td>
 <td>  {{ key.provider}} </a></td>
+<td> {{ key.subject }} </td>
+<td name = key ><a href="sentItems/{{ key.doc_id  }}">  {{ key.doc_id }} </a></td>
 
 <!-- <td> {{ key.name }} </td>
 <td> {{ key.id }} </td>-->

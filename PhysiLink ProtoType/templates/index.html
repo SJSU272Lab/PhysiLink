@@ -38,39 +38,46 @@ tr:nth-child(even) {
 <body>
  
     <div class="container">
+
         <div class="header">
             <nav>
                 <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="#">Inbox</a>
+                    <li role="presentation" class="active"><a href="http://localhost:5000/">Inbox</a>
                     </li>
-                    <li role="presentation"><a href="showSentBox">Sent Items</a>
+                    <li role="presentation"><a href="http://localhost:5000/showSentBox">Sent Items</a>
                     </li>
-                    <li role="presentation"><a href="showSignUp">Create New Email</a>
+                    <li role="presentation"><a href="http://localhost:5000/showSignUp">Create New Email</a>
                     </li>
                 </ul>
             </nav>
             <h3 class="text-muted">PhysiLink</h3>
         </div>
 
+
         <div class="jumbotron">
             <p class="lead"></p>
  	<p><a class="btn btn-lg btn-success" href="hello" role="button">Connect</a>
+            </p>
+	<p><a class="btn btn-lg btn-success" href="createUser" role="button">Create User</a>
             </p>
  	<p><a class="btn btn-lg btn-success" href="createVault" role="button">Vault</a>
             </p>
 
 <table>
   <tr>
+    <th>Name</th>
+    <th>Provider Number</th>
+    <th> Subject </th>
     <th>Document ID </th>
-    <th>From: Name</th>
-    <th>From: Provider Number</th>
   </tr>
  
 {% for key in result %}
  <tr>
-<td name = key ><a href="sentItems/{{ key.doc_id }}">  {{ key.doc_id }} </a></td>
+
 <td>  {{ key.name }} </a></td>
 <td>  {{ key.provider}} </a></td>
+<td> {{ key.subject }} </td>.
+<td name = key ><a href="sentItems/{{ key.doc_id }}">  {{ key.doc_id }} </a></td>
 
 <!-- <td> {{ key.name }} </td>
 <td> {{ key.id }} </td>-->

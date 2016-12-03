@@ -35,15 +35,16 @@
     }
   </style>
 </head>
-      <div class="container">
+
+    <div class="container">
         <div class="header">
             <nav>
                 <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="http://localhost:5000/">Inbox</a>
+                    <li role="presentation" class="active"><a href="#">Inbox</a>
                     </li>
-                    <li role="presentation"><a href="http://localhost:5000/showSentBox">Sent Items</a>
+                    <li role="presentation"><a href="showSentBox">Sent Items</a>
                     </li>
-                    <li role="presentation"><a href="http://localhost:5000/showSignUp">Create New Email</a>
+                    <li role="presentation"><a href="showSignUp">Create New Email</a>
                     </li>
                 </ul>
             </nav>
@@ -54,14 +55,11 @@
 
     <div class="col-sm-9">
 
-    <p>Name:  {{ result[0]}} </p>
-    <p>Provider Number: {{ result[1]}}  </p>
-    <p> Subject: {{ result[2]}} </p>
+
 	<br><br>
-    <p> {{ result[3]}}  </p>
-    <p><a class="btn btn-lg btn-success" name = "key" href="attachments/{{ result[6] }} /{{ result[4] }}/ {{ result[5] }}" role="button">Download attachments</a>
-    <p> Attachment: {{ result[5]}} </p>
-    <p> Attachments will download to your current working directory.</p> 
+    <p> File {{ result }} downloaded to your Downloads folder. </p>
+    <p><a class="btn btn-lg btn-success" name = "key" onclick="/sentItems/attachments/{{ id }}/{{ key }}/{{ filename }}/redirect" role="button">Return to Email</a>
+
 
 
 
@@ -77,4 +75,3 @@
 
 </body>
 </html>
-

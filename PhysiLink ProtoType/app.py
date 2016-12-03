@@ -42,6 +42,8 @@ def showSentBox():
     sent_list = []
     for item in list:
         sent_list.append(Sent_Emails(item["sender"], item["receiver"], item["document_id"], item["provider"], item["subject"], VAULT_ID))
+    log_file = open("log.txt", "a")
+    log_file.write("User viewed outgoing mailbox at %s\n" % datetime.datetime.now())
     return render_template( 'link1.html', result = sent_list)
 
 @app.route('/sentItems/<key>', methods=['GET', 'POST'])
@@ -113,7 +115,8 @@ def createEmail():
         print(success)
     else:
         success = database.createEmail(db, list)
-
+    log_file = open("log.txt", "a")
+    log_file.write("User sent email at %s to %s\n" % datetime.datetime.now(), name)
     return redirect("/", code=302)
 
 
@@ -168,6 +171,8 @@ def main():
     for item in list:
         user = database.getUser(db, item["sender"])
         recv_list.append(Sent_Emails(user["name"], item["receiver"], item["document_id"], item["provider"], item["subject"], item["vault_id"]))
+    log_file = open("log.txt", "a")
+    log_file.write("User viewed incoming mailbox at %s\n" % datetime.datetime.now())
     return render_template('index.html', result = recv_list)
 
 if __name__ == "__main__":
