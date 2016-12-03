@@ -161,27 +161,27 @@ def api_hello():
     #resp = requests.post('https://api.truevault.com/v1/auth/login', data=data)
     return resp
 
-@app.route('/connect',methods=['GET','POST'])
+
+@app.route('/connect', methods=['GET', 'POST'])
 def connect():
-	data = {
+    data = {
         'username': 'new_user',
         'password': 'new_password',
         'account_id': '86444b4a-cb69-4078-96bd-c577e324e886'
-	}
-	js = json.dumps(data)
+    }
+    js = json.dumps(data)
 
-	resp = Response(js, status=200, mimetype='application/json')
-	resp.headers['Link'] = 'https://api.truevault.com/v1/auth/login'
-    
-	list = database.getRecvEmail(db, "Kristina")
-	print(list)
-	recv_list = []
-	for item in list:
-		user = database.getUser(db, item["sender"])
-		recv_list.append(Sent_Emails(user["name"], item["receiver"], item["document_id"], item["provider"], item["subject"], item["vault_id"]))
-	log_file = open("log.txt", "a")
-	log_file.write("User logged in on %s\n" % datetime.datetime.now())
-	return render_template('index.html', result = recv_list)
+    resp = Response(js, status=200, mimetype='application/json')
+    resp.headers['Link'] = 'https://api.truevault.com/v1/auth/login'
+    list = database.getRecvEmail(db, "Kristina")
+    print(list)
+    recv_list = []
+    for item in list:
+        user = database.getUser(db, item["sender"])
+        recv_list.append(Sent_Emails(user["name"], item["receiver"], item["document_id"], item["provider"], item["subject"], item["vault_id"]))
+    log_file = open("log.txt", "a")
+    log_file.write("User viewed incoming mailbox at %s\n" % datetime.datetime.now())
+    return render_template('index.html', result = recv_list)
 
 
 @app.route("/")
