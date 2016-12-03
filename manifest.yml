@@ -1,0 +1,7 @@
+---
+applications:
+- name: physilink
+  host: physilink-${random-word}
+  memory: 128M
+  instances: 1
+  path: .
