@@ -19,6 +19,6 @@ setup(
     version='1.0.0',
     description='PhysiLink app for running Python apps on Bluemix',
     long_description=long_description,
-    url='https://github.com/SJSU272Lab/Fall16-Team15/tree/master/PhysiLink%20ProtoType',
+    url='https://github.com/SJSU272Lab/Fall16-Team15',
     license='Apache-2.0'
 )
