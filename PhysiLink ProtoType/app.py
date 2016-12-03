@@ -181,7 +181,7 @@ def connect():
         recv_list.append(Sent_Emails(user["name"], item["receiver"], item["document_id"], item["provider"], item["subject"], item["vault_id"]))
     log_file = open("log.txt", "a")
     log_file.write("User logged in on %s\n" % datetime.datetime.now())
-    return render_template('index.html', result = recv_list)
+    return render_template('app.html')
 
 
 @app.route("/")
