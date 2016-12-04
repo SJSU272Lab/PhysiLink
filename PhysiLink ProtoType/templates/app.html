@@ -1,19 +1,10 @@
->
-<link rel="stylesheet" href="static/desktop/vendors/bootstrap-3.3.5-dist/css/bootstrap.css">
   <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
  
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <img src="http://i1043.photobucket.com/albums/b434/kmills220/Logo_zpsuhlwvgla.png" alt="logo" height=120px width= 240px>
-      </a>
-    </div>
-  </div>
-</nav>
-
+        <div class="header">
+           <img src="http://i1043.photobucket.com/albums/b434/kmills220/Logo_zpsuhlwvgla.png" alt="logo" height=120px width= 240px>
+        </div>
+        
 <div class="container">
    <!-- Logged out view !-->
    <div id='logged-out-view' class='well'>
@@ -27,12 +18,10 @@
             <label>Password</label>
             <input name='password' type="password" class="form-control">
          </div>
-         <button type="submit" class="btn btn-primary"<a href = "connect">Login</a></button>
-
       </form>
+      <p><a class="btn btn-lg btn-success" href="connect" role="button">LOGIN</a>
    </div>
 
-<p><a class="btn btn-lg btn-success" href="connect" role="button">LOGIN</a>
             </p>
    
    <!-- Logged in view !-->
@@ -44,7 +33,7 @@
    
    <hr> 
    
-   <div id='signup-view' class='well'>
+   <div id='signup-view' class='well hidden'>
       <h3> New User? Register Now!</h3>
       <form id='signup-form'>
          <div class="form-group">
@@ -74,14 +63,7 @@
          <button type="submit" class="btn btn-primary">Register</button>
       </form>
    </div>
+    <footer class="footer" align="center">
+            <p>&copy; Company 2015</p>
+        </footer>
 </div>
-
-
-
-
-<!-- Put javascript here !-->
-
-   <script src="/static/desktop/vendors/jquery.js"></script>
-   <script src="/static/desktop/js/main.js"></script>
-   
-
