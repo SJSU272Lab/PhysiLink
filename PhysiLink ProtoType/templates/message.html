@@ -23,6 +23,16 @@
       background-color: #555;
       color: white;
       padding: 15px;
+      text-align: center;
+    }
+    
+    h3 {
+    	text-align:center;
+    }
+    
+    #contents {
+    	margin-left:50px;
+    	margin-right:50px;
     }
     
     /* On small screens, set height to 'auto' for sidenav and grid */
@@ -39,7 +49,7 @@
         <div class="header">
             <nav>
                 <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="http://localhost:5000/">Inbox</a>
+                    <li role="presentation"><a href="http://localhost:5000/connect">Inbox</a>
                     </li>
                     <li role="presentation"><a href="http://localhost:5000/showSentBox">Sent Items</a>
                     </li>
@@ -47,21 +57,23 @@
                     </li>
                 </ul>
             </nav>
-            <h3 class="text-muted">PhysiLink</h3>
+                <img src="http://i1043.photobucket.com/albums/b434/kmills220/Logo_zpsuhlwvgla.png" alt="logo" height=120px width= 240px>
         </div>
+        <h3>Message Detail</h3>
+        <hr>
 <body>
 
 
-    <div class="col-sm-9">
+    <div class="col-sm-9" id="contents">
 
-    <p>Name:  {{ result[0]}} </p>
-    <p>Provider Number: {{ result[1]}}  </p>
-    <p> Subject: {{ result[2]}} </p>
-	<br><br>
+    <p><b>Name:</b>  {{ result[0]}} </p>
+    <p><b>Provider Number:</b> {{ result[1]}}  </p>
+    <p><b>Subject:</b> {{ result[2]}} </p>
+	<p><b>Message Content:</b></p>
     <p> {{ result[3]}}  </p>
-    <p><a class="btn btn-lg btn-success" name = "key" href="attachments/{{ result[6] }} /{{ result[4] }}/ {{ result[5] }}" role="button">Download attachments</a>
-    <p> Attachment: {{ result[5]}} </p>
-    <p> Attachments will download to your current working directory.</p> 
+    <p><b>Attachment:</b> {{ result[5]}}</p>
+    <p><a class="btn btn-lg btn-success" name = "key" href="attachments/{{ result[6] }} /{{ result[4] }}/ {{ result[5] }}" role="button">Download attachment</a><br>
+    <p><i>Attachments will download to your current working directory.</i></p> 
 
 
 
@@ -73,7 +85,9 @@
 </div>
 
 
-
+ <footer class="footer" align="center">
+            <p>&copy; Company 2015</p>
+        </footer>
 
 </body>
 </html>
