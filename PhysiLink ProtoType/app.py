@@ -3,8 +3,12 @@ import requests
 import base64
 import json
 import database
+import cf_deployment_tracker
 import os
 import datetime
+
+# Emit Bluemix deployment event
+cf_deployment_tracker.track()
 
 
 VAULT_ID = "cada6e4e-39e6-4dbf-b550-3dda6f3e7e9a"
@@ -28,6 +32,12 @@ class Sent_Emails:
 UPLOAD_FOLDER = '/Home/Downloads'
 ALLOWED_EXTENSIONS = set(['csv','txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app = Flask(__name__)
+
+# On Bluemix, get the port number from the environment variable VCAP_APP_PORT
+# When running this app on the local machine, default the port to 8080
+port = int(os.getenv('VCAP_APP_PORT', 8080))
+
+
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 db = database.ConnectDB(USERNAME, PASSWD, URL, 'physician')
@@ -70,7 +80,7 @@ def attachment(key, filename, doc):
     #key = '5c7d886a84f4c2101d7836a1a159caff'
     success = database.getRecvAttachment(db, key, filename)
     flash("Success")
-    return redirect(url_for(".sentItems/attachments/<doc>/<key>/<filename>", key=key, doc=doc, filename=filename), code=302)
+    return redirect("/connect", code=302)
 
 
 def allowed_file(filename):
@@ -187,8 +197,8 @@ def connect():
 @app.route("/")
 def main():
     return render_template('app.html')
-
-if __name__ == "__main__":
+    
+if __name__ == '__main__':
     app.secret_key = 'super secret key'
     app.config['SESSION_TYPE'] = 'filesystem'
-    app.run(threaded = True)
+    app.run(host='0.0.0.0', port=port)
