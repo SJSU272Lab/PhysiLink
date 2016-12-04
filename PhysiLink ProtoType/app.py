@@ -95,40 +95,42 @@ def upload_file():
 
 @app.route('/createEmail', methods=['GET', 'POST'])
 def createEmail():
-    if request.method == 'POST':
-        file = request.files['file']
-    else:
-        file = None
+	if request.method == 'POST':
+		file = request.files['file']
+		if file.filename == "": 
+			file = None 
+	else:
+		file = None
 
-    name = request.form['name']
-    sender = request.form['sender']
-    subject = request.form['title']
-    message = request.form['document']
-    provider = request.form['provider']
+	name = request.form['name']
+	sender = request.form['sender']
+	subject = request.form['title']
+	message = request.form['document']
+	provider = request.form['provider']
 
-    s = json.dumps(message)
-    message_document = base64.b64encode(s.encode('utf-8'))
-    data = {
-       'document': message_document,
-        #schema_id': '00000000-0000-0000-0000-000000000000',
-        #'owner_id': 'dae9ccbf-085d-4fc3-a4ff-e97e1ccc6736'
-    }
+	s = json.dumps(message)
+	message_document = base64.b64encode(s.encode('utf-8'))
+	data = {
+	   'document': message_document,
+		#schema_id': '00000000-0000-0000-0000-000000000000',
+		#'owner_id': 'dae9ccbf-085d-4fc3-a4ff-e97e1ccc6736'
+	}
 
-    resp = requests.post('https://api.truevault.com/v1/vaults/cada6e4e-39e6-4dbf-b550-3dda6f3e7e9a/documents', data=data,
-                  auth=('a4fced3b-820d-488c-b429-884798f5d5c8', ''))
+	resp = requests.post('https://api.truevault.com/v1/vaults/cada6e4e-39e6-4dbf-b550-3dda6f3e7e9a/documents', data=data,
+		          auth=('a4fced3b-820d-488c-b429-884798f5d5c8', ''))
 
-    json_data = json.loads(resp.text)
-    list = [sender, name, subject, message, json_data['document_id'], provider, VAULT_ID]
-    if file is not None:
-        fo = open(file.filename, "r")
-        extension = os.path.splitext(file.filename)[1][1:]
-        success = database.createEmail(db, list, fo, file.filename, extension)
-        print(success)
-    else:
-        success = database.createEmail(db, list)
-    log_file = open("log.txt", "a")
-    log_file.write("User sent email at %s to %s\n" % datetime.datetime.now(), name)
-    return redirect("/", code=302)
+	json_data = json.loads(resp.text)
+	list = [sender, name, subject, message, json_data['document_id'], provider, VAULT_ID]
+	if file is not None:
+		fo = open(file.filename, "r")
+		extension = os.path.splitext(file.filename)[1][1:]
+		success = database.createEmail(db, list, fo, file.filename, extension)
+		print(success)
+	else:
+		success = database.createEmail(db, list)
+	log_file = open("log.txt", "a")
+	log_file.write("User viewed outgoing mailbox at %s\n" % datetime.datetime.now())
+	return redirect("/", code=302)
 
 
 
