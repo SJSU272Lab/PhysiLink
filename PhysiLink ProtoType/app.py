@@ -70,7 +70,7 @@ def attachment(key, filename, doc):
     #key = '5c7d886a84f4c2101d7836a1a159caff'
     success = database.getRecvAttachment(db, key, filename)
     flash("Success")
-    return redirect("/", code=302)
+    return redirect(url_for(".sentItems/attachments/<doc>/<key>/<filename>", key=key, doc=doc, filename=filename), code=302)
 
 
 def allowed_file(filename):
