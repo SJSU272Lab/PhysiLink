@@ -1,0 +1,4 @@
+Flask==0.11.1
+cf-deployment-tracker==1.0.2
+python==2.7.11
+cloudant==2.3.0
