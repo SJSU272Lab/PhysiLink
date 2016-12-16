@@ -45,3 +45,4 @@ A patient leaves town for an evening forgetting their thyroid medication which t
 
 ![Kristina Milkovich](https://avatars3.githubusercontent.com/u/13892374?v=3&s=100)<br />
 [Kristina Milkovich](https://github.com/kiteena)
+[Christopher Laurence](https://github.com/bakayaro)
