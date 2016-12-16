@@ -6,7 +6,7 @@ Solution: Provide an interface for doctors and physicians that allows them to di
 
 There are two personas demonstrated for this software: the user as an initiator of an email and the user as a recipient. On the initiating end the user desires the ability to locate a recipient, compose a message, and insurance of delivery. On the receiving end the user desires an organized interface to view mailbox contents and a fluid format for reading conversations.
 
-[Architecture Flow Diagram](https://github.com/SJSU272Lab/PhysiLink/blob/master/Implementation%20Architecture.png)
+![Architecture Flow Diagram](https://github.com/SJSU272Lab/PhysiLink/blob/master/Implementation%20Architecture.png)
 
 User stories are as followed: 
 
