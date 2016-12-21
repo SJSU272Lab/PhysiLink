@@ -43,6 +43,8 @@ A patient suffers a first time seizure during a party in an area 40 miles from w
 Use Case 3:
 A patient leaves town for an evening forgetting their thyroid medication which they must take in a timely fashion. They call Wallgreen’s to order a single serving of the medication, but are met with extensive bureaucracy. Even though the patient has a current prescription, Wallgreen’s must call Kaiser on the phone to verify the prescription before they are able to administer it. This can take upwards of an hour and half with several back and forth phone calls, wasting both the time of the health professional and patient. With a service like PhysiLink, the pharmacist would be able to directly contact the patient’s doctor to verify the prescription. An extension of the service would allow storage of all relevant prescriptions issued from a doctor for a patient, so that all documents could be accessed and updated in real-time from an electronic source instead of requiring phone calls.
 
+Project Contributors: 
+
 ![Kristina Milkovich](https://avatars3.githubusercontent.com/u/13892374?v=3&s=100)<br />
 [Kristina Milkovich](https://github.com/kiteena)<br />
 [Christopher Laurence](https://github.com/bakayaro)<br />
