@@ -47,3 +47,4 @@ A patient leaves town for an evening forgetting their thyroid medication which t
 [Kristina Milkovich](https://github.com/kiteena)<br />
 [Christopher Laurence](https://github.com/bakayaro)<br />
 [Kelsie Mills McKenty](https://github.com/kelsiemills)<br />
+[Armandeep Kahlon] (https://github.com/Kahlon93)<br />
